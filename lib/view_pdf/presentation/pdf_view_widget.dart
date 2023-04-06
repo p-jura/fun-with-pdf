@@ -22,6 +22,7 @@ class _PdfViewWidgetState extends State<PdfViewWidget> {
         'assets/example.pdf',
       ),
       floatingActionButton: FloatingActionButton(
+        
         onPressed: () {},
         tooltip: 'Load pdf',
         child: const Icon(Icons.add),
