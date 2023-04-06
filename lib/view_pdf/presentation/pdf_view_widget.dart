@@ -21,11 +21,11 @@ class _PdfViewWidgetState extends State<PdfViewWidget> {
       body: SfPdfViewer.asset(
         'assets/example.pdf',
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        
         onPressed: () {},
         tooltip: 'Load pdf',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.upload),
       ),
     );
   }

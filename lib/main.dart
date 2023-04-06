@@ -44,7 +44,6 @@ class _NawigationBarWidgetState extends State<NawigationBarWidget> {
         currentIndex: index,
         backgroundColor: Colors.blue[100],
         onTap: (pageIndex) {
-          print('pageIndex = $pageIndex, index = $index');
           if (pageIndex <= pageList.length) {
             setState(() {
               index = pageIndex;
