@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:dartz/dartz.dart';
 import 'package:fun_with_pdf/view_pdf/domain/entities.dart';
 import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,14 +26,18 @@ void main() {
     () async {
       when(repository.getDataFromFile()).thenAnswer(
         (_) => Future.value(
-          PdfBytes(data),
+          Right(
+            PdfBytes(data),
+          ),
         ),
       );
       final resoult = await usecase();
 
       expect(
         resoult,
-        PdfBytes(data),
+        Right(
+          PdfBytes(data),
+        ),
       );
       verify(
         repository.getDataFromFile(),

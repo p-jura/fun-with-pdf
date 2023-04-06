@@ -2,6 +2,8 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fun_with_pdf/view_pdf/constants.dart';
+import 'package:fun_with_pdf/view_pdf/core/fialure.dart';
 import 'package:fun_with_pdf/view_pdf/data/model/pdf_bytes_model.dart';
 import 'package:fun_with_pdf/view_pdf/domain/entities.dart';
 
@@ -49,27 +51,17 @@ void main() {
         },
       );
       test(
-        'should rerurn a unvalid model from example.txt file',
+        'should rerurn a valid model with failure message if file is not pdf',
         () async {
           // arrange
           final File? fileFromFilePicker = fixtureFilePicker('example.txt');
-          final File fileFixture = fixtureFile('example.txt');
-
-          final modelToCompare = PdfBytesModel(await fileFixture.readAsBytes());
-          var resoult;
+    
           // act
-          try {
-            resoult = PdfBytesModel.fromFile(fileFromFilePicker);
-          } catch (e) {
-            resoult = e;
-          }
-
+          final resoult = PdfBytesModel.fromFile(fileFromFilePicker);
           // assert
           expect(
-            resoult.toString(),
-            Exception(
-              ['File not found'],
-            ).toString(),
+            resoult.exception,
+            Failure(exeptionFileTypeIsNotCorrect),
           );
         },
       );

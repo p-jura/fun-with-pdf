@@ -5,7 +5,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:fun_with_pdf/view_pdf/domain/entities.dart' as _i2;
+import 'package:dartz/dartz.dart' as _i2;
+import 'package:fun_with_pdf/view_pdf/core/fialure.dart' as _i5;
+import 'package:fun_with_pdf/view_pdf/domain/entities.dart' as _i6;
 import 'package:fun_with_pdf/view_pdf/domain/repository/pdf_data_repository.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
@@ -21,8 +23,8 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakePdfBytes_0 extends _i1.SmartFake implements _i2.PdfBytes {
-  _FakePdfBytes_0(
+class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
+  _FakeEither_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -37,12 +39,14 @@ class _FakePdfBytes_0 extends _i1.SmartFake implements _i2.PdfBytes {
 // ignore: must_be_immutable
 class MockPdfDataRepository extends _i1.Mock implements _i3.PdfDataRepository {
   @override
-  _i4.Future<_i2.PdfBytes> getDataFromFile() => (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, _i6.PdfBytes>> getDataFromFile() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getDataFromFile,
           [],
         ),
-        returnValue: _i4.Future<_i2.PdfBytes>.value(_FakePdfBytes_0(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.PdfBytes>>.value(
+            _FakeEither_0<_i5.Failure, _i6.PdfBytes>(
           this,
           Invocation.method(
             #getDataFromFile,
@@ -50,12 +54,13 @@ class MockPdfDataRepository extends _i1.Mock implements _i3.PdfDataRepository {
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.PdfBytes>.value(_FakePdfBytes_0(
+            _i4.Future<_i2.Either<_i5.Failure, _i6.PdfBytes>>.value(
+                _FakeEither_0<_i5.Failure, _i6.PdfBytes>(
           this,
           Invocation.method(
             #getDataFromFile,
             [],
           ),
         )),
-      ) as _i4.Future<_i2.PdfBytes>);
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.PdfBytes>>);
 }

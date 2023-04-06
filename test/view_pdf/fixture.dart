@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 
 File fixtureFile(String name) => File('assets/$name');
+
 File? fixtureFilePicker(String name) {
   FilePickerResult result = FilePickerResult(
     [
@@ -11,9 +12,8 @@ File? fixtureFilePicker(String name) {
   );
   final fileType = result.files.first.extension;
   if (fileType == 'pdf') {
-    print('File extension: $fileType');
-    final path = result.files[0].path;
-    return File(path ?? 'empty');
+    final String path = result.files[0].path!;
+    return File(path);
   }
   return null;
 }

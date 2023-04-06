@@ -1,10 +1,12 @@
 import 'dart:io';
-import 'dart:typed_data';
 
+import 'package:fun_with_pdf/view_pdf/core/fialure.dart';
 import 'package:fun_with_pdf/view_pdf/domain/entities.dart';
 
+import '../../constants.dart';
+
 class PdfBytesModel extends PdfBytes {
-  final Exception? exception;
+  final Failure? exception;
 
   PdfBytesModel(
     data, [
@@ -13,10 +15,9 @@ class PdfBytesModel extends PdfBytes {
 
   factory PdfBytesModel.fromFile(File? file) {
     if (file == null) {
-      throw Exception(
-        [
-          'File not found',
-        ],
+     return PdfBytesModel(
+        File('assets/example.pdf').readAsBytesSync(),
+        Failure(exeptionFileTypeIsNotCorrect),
       );
     }
     return PdfBytesModel(
