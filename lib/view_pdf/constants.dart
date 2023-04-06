@@ -1,0 +1,1 @@
+const String exeptionFileTypeIsNotCorrect = 'The file type is not correct';
