@@ -1,3 +1,4 @@
+import 'package:fun_with_pdf/view_pdf/constants.dart';
 import 'package:fun_with_pdf/view_pdf/domain/entities.dart';
 import 'package:fun_with_pdf/view_pdf/core/fialure.dart';
 import 'package:dartz/dartz.dart';
@@ -11,6 +12,12 @@ class PdfDataRepositoryImpl implements PdfDataRepository {
   PdfDataRepositoryImpl(this.dataSource);
   @override
   Future<Either<Failure, PdfBytes>> getDataFromFile() async {
-    return Right(dataSource.getDataFromFile());
+    final response = await dataSource.getFilePickerResoult();
+    if (response == null) {
+      return Left(
+        Failure(noFileLoadedExeption),
+      );
+    }
+    return Right(response);
   }
 }

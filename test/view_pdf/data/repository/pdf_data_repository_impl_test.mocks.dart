@@ -3,8 +3,10 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:fun_with_pdf/view_pdf/data/data_source/data_source.dart' as _i3;
-import 'package:fun_with_pdf/view_pdf/data/model/pdf_bytes_model.dart' as _i2;
+import 'dart:async' as _i3;
+
+import 'package:fun_with_pdf/view_pdf/data/data_source/data_source.dart' as _i2;
+import 'package:fun_with_pdf/view_pdf/data/model/pdf_bytes_model.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -18,41 +20,19 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakePdfBytesModel_0 extends _i1.SmartFake implements _i2.PdfBytesModel {
-  _FakePdfBytesModel_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
 /// A class which mocks [FilePickerDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 // ignore: must_be_immutable
 class MockFilePickerDataSource extends _i1.Mock
-    implements _i3.FilePickerDataSource {
+    implements _i2.FilePickerDataSource {
   @override
-  _i2.PdfBytesModel getDataFromFile() => (super.noSuchMethod(
+  _i3.Future<_i4.PdfBytesModel?> getFilePickerResoult() => (super.noSuchMethod(
         Invocation.method(
-          #getDataFromFile,
+          #getFilePickerResoult,
           [],
         ),
-        returnValue: _FakePdfBytesModel_0(
-          this,
-          Invocation.method(
-            #getDataFromFile,
-            [],
-          ),
-        ),
-        returnValueForMissingStub: _FakePdfBytesModel_0(
-          this,
-          Invocation.method(
-            #getDataFromFile,
-            [],
-          ),
-        ),
-      ) as _i2.PdfBytesModel);
+        returnValue: _i3.Future<_i4.PdfBytesModel?>.value(),
+        returnValueForMissingStub: _i3.Future<_i4.PdfBytesModel?>.value(),
+      ) as _i3.Future<_i4.PdfBytesModel?>);
 }
