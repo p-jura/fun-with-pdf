@@ -31,11 +31,11 @@ void main() {
   test(
     'should return mocked data frome file when dataFromFile is called',
     () async {
-      when(dataSource.getFilePickerResoult()).thenAnswer(
+      when(dataSource.getFilePickerResoultAsModel()).thenAnswer(
         (_) async => tPdfModel,
       );
       final resoult = await repositoryImpl.getDataFromFile();
-      verify(dataSource.getFilePickerResoult());
+      verify(dataSource.getFilePickerResoultAsModel());
       expect(
         resoult,
         equals(Right(tPdfModel)),
@@ -43,7 +43,7 @@ void main() {
     },
   );
   test('should return failure when no file is picked ()', () async {
-    when(dataSource.getFilePickerResoult()).thenAnswer(
+    when(dataSource.getFilePickerResoultAsModel()).thenAnswer(
       (_) async => null,
     );
     final resoult = await repositoryImpl.getDataFromFile();

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fun_with_pdf/view_pdf/presentation/bloc/pdf_view_cubit.dart';
 
 import 'create_pdf/presentation/pdf_create_widget.dart';
 import 'view_pdf/presentation/pdf_view_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'view_pdf/get_it_instance.dart' as gi;
 
-void main() {
+void main() async {
+  await gi.setupGetIt();
   runApp(const MyApp());
 }
 
@@ -19,7 +23,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const NawigationBarWidget(),
+      home: BlocProvider(
+        create: (_) => gi.getIt<PdfViewCubit>(),
+        child: NawigationBarWidget(),
+      ),
     );
   }
 }

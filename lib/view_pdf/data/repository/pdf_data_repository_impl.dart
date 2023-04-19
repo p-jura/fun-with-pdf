@@ -12,7 +12,7 @@ class PdfDataRepositoryImpl implements PdfDataRepository {
   PdfDataRepositoryImpl(this.dataSource);
   @override
   Future<Either<Failure, PdfBytes>> getDataFromFile() async {
-    final response = await dataSource.getFilePickerResoult();
+    final response = await dataSource.getFilePickerResoultAsModel();
     if (response == null) {
       return Left(
         Failure(noFileLoadedExeption),

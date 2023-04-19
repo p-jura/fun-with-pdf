@@ -27,9 +27,10 @@ import 'package:mockito/mockito.dart' as _i1;
 class MockFilePickerDataSource extends _i1.Mock
     implements _i2.FilePickerDataSource {
   @override
-  _i3.Future<_i4.PdfBytesModel?> getFilePickerResoult() => (super.noSuchMethod(
+  _i3.Future<_i4.PdfBytesModel?> getFilePickerResoultAsModel() =>
+      (super.noSuchMethod(
         Invocation.method(
-          #getFilePickerResoult,
+          #getFilePickerResoultAsModel,
           [],
         ),
         returnValue: _i3.Future<_i4.PdfBytesModel?>.value(),

@@ -1,21 +1,21 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:fun_with_pdf/view_pdf/core/fialure.dart';
 import 'package:fun_with_pdf/view_pdf/data/model/pdf_bytes_model.dart';
 
+import '../../constants.dart';
 import 'data_source.dart';
 
 class FilePickerDataSourceImpl implements FilePickerDataSource {
-  final FilePicker dataPicker;
-
-  FilePickerDataSourceImpl(this.dataPicker);
   @override
-  Future<PdfBytesModel?> getFilePickerResoult() async {
+  Future<PdfBytesModel?> getFilePickerResoultAsModel() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       File file = File(result.files.single.path!);
-      return PdfBytesModel(file);
+      return PdfBytesModel.fromFile(file);
     }
-    return null;
+    return PdfBytesModel(Uint8List(0), Failure(noFileLoadedExeption));
   }
 }
