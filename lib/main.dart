@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fun_with_pdf/view_pdf/presentation/bloc/pdf_view_cubit.dart';
 
-import 'create_pdf/presentation/pdf_create_widget.dart';
-import 'view_pdf/presentation/pdf_view_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'view_pdf/get_it_instance.dart' as gi;
+import 'package:fun_with_pdf/src/presentation/create_pdf/pdf_create_widget.dart';
+import 'package:fun_with_pdf/src/presentation/view_pdf/bloc/pdf_view_cubit.dart';
+import 'package:fun_with_pdf/src/presentation/view_pdf/pdf_view_widget.dart';
+import 'src/get_it_instance.dart' as gi;
 
 void main() async {
   await gi.setupGetIt();
