@@ -12,9 +12,10 @@ class FilePickerDataSourceImpl implements FilePickerDataSource {
   @override
   Future<PdfBytesModel?> getFilePickerResoultAsModel() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
-        allowMultiple: false,
-        type: FileType.custom,
-        allowedExtensions: ['pdf']);
+      allowMultiple: false,
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
     if (result != null) {
       File file = File(result.files.single.path!);
       return PdfBytesModel.fromFile(file);

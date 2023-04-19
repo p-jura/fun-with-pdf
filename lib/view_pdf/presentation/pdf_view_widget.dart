@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fun_with_pdf/view_pdf/get_it_instance.dart';
 import 'package:fun_with_pdf/view_pdf/presentation/bloc/pdf_view_cubit.dart';
 import 'package:fun_with_pdf/view_pdf/presentation/bloc/pdf_view_state.dart';
+import 'package:fun_with_pdf/view_pdf/presentation/pdf_nav_action_button.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfViewWidget extends StatefulWidget {
@@ -20,6 +21,13 @@ class _PdfViewWidgetState extends State<PdfViewWidget> {
   final _title = 'View PDF';
   late Uint8List loadedPdfData;
   late String errorMessage;
+  late PdfViewerController _pdfViewerController;
+
+  @override
+  void initState() {
+    _pdfViewerController = PdfViewerController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,23 +43,29 @@ class _PdfViewWidgetState extends State<PdfViewWidget> {
           appBar: AppBar(
             title: Text(_title),
           ),
-          body: state is EmptyPdfViewState
-              ? SfPdfViewer.asset(
-                  'assets/example.pdf',
-                )
-              : state is LoadedPdfViewState
-                  ? SfPdfViewer.memory(loadedPdfData)
-                  : Center(
-                      child: Text(errorMessage),
-                    ),
+          body: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: state is EmptyPdfViewState
+                ? SfPdfViewer.asset(
+                    'assets/example.pdf',
+                  )
+                : state is LoadedPdfViewState
+                    ? SfPdfViewer.memory(
+                        loadedPdfData,
+                        controller: _pdfViewerController,
+                        enableDoubleTapZooming: true,
+                      )
+                    : Center(
+                        child: Text(errorMessage),
+                      ),
+          ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
+          floatingActionButton: PdfNavActionButton(
+            pdfViewerController: _pdfViewerController,
+            onLoadImagePressed: () {
               getIt<PdfViewCubit>().openPdf();
             },
-            tooltip: 'Load pdf',
-            child: const Icon(Icons.upload),
           ),
         );
       },
