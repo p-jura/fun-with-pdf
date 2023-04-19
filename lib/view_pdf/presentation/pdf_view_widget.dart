@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -29,9 +28,7 @@ class _PdfViewWidgetState extends State<PdfViewWidget> {
         if (state is LoadedPdfViewState) {
           loadedPdfData = state.dataFromFile;
         } else if (state is PdfErrorState) {
-        
           errorMessage = state.message;
-          print(errorMessage);
         }
 
         return Scaffold(

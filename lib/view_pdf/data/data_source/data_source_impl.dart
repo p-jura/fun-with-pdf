@@ -11,7 +11,10 @@ import 'data_source.dart';
 class FilePickerDataSourceImpl implements FilePickerDataSource {
   @override
   Future<PdfBytesModel?> getFilePickerResoultAsModel() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+        allowMultiple: false,
+        type: FileType.custom,
+        allowedExtensions: ['pdf']);
     if (result != null) {
       File file = File(result.files.single.path!);
       return PdfBytesModel.fromFile(file);

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (_) => gi.getIt<PdfViewCubit>(),
-        child: NawigationBarWidget(),
+        child: const NawigationBarWidget(),
       ),
     );
   }

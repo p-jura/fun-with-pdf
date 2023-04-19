@@ -25,4 +25,7 @@ class PdfBytesModel extends PdfBytes {
       file.readAsBytesSync(),
     );
   }
+
+ // bool didFailed() => exception != null?
+
 }

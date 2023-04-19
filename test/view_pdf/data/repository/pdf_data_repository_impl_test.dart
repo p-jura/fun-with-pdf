@@ -42,18 +42,45 @@ void main() {
       );
     },
   );
-  test('should return failure when no file is picked ()', () async {
-    when(dataSource.getFilePickerResoultAsModel()).thenAnswer(
-      (_) async => null,
-    );
-    final resoult = await repositoryImpl.getDataFromFile();
-    expect(
-      resoult,
-      equals(
-        Left(
-          Failure(noFileLoadedExeption),
+  test(
+    '''should return failure with message failedToLoadFile
+       when file picker gives null responce)''',
+    () async {
+      when(dataSource.getFilePickerResoultAsModel()).thenAnswer(
+        (_) async => null,
+      );
+      final resoult = await repositoryImpl.getDataFromFile();
+      expect(
+        resoult,
+        equals(
+          Left(
+            Failure(failedToLoadFile),
+          ),
         ),
-      ),
-    );
-  });
+      );
+    },
+  );
+  test(
+    '''should return failure with message noFileLoadedExeption
+       when file picker was canceled)''',
+    () async {
+      when(dataSource.getFilePickerResoultAsModel()).thenAnswer(
+        (_) async => Future.value(
+          PdfBytesModel(
+            Uint8List(8),
+            Failure(noFileLoadedExeption),
+          ),
+        ),
+      );
+      final resoult = await repositoryImpl.getDataFromFile();
+      expect(
+        resoult,
+        equals(
+          Left(
+            Failure(noFileLoadedExeption),
+          ),
+        ),
+      );
+    },
+  );
 }

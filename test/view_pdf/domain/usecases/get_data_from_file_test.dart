@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
+import 'package:fun_with_pdf/view_pdf/core/fialure.dart';
 import 'package:fun_with_pdf/view_pdf/domain/entities.dart';
 import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,10 +14,10 @@ import 'package:mockito/mockito.dart';
 import 'get_data_from_file_test.mocks.dart';
 
 void main() {
-  late final MockPdfDataRepository repository;
-  late final DataFromFile usecase;
+  late PdfDataRepository repository;
+  late DataFromFile usecase;
   final Uint8List data = Uint8List(1);
-
+  const String tFailureMessage = 'test';
   setUp(() {
     repository = MockPdfDataRepository();
     usecase = DataFromFile(repository);
@@ -41,6 +42,25 @@ void main() {
       );
       verify(
         repository.getDataFromFile(),
+      );
+    },
+  );
+  test(
+    'Should get Failure frome repository',
+    () async {
+      when(repository.getDataFromFile()).thenAnswer(
+        (_) async => Left(
+          Failure(tFailureMessage),
+        ),
+      );
+      final resoult = await usecase.call();
+      expect(
+        resoult,
+        equals(
+          Left(
+            Failure(tFailureMessage),
+          ),
+        ),
       );
     },
   );

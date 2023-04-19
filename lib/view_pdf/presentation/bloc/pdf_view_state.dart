@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:fun_with_pdf/view_pdf/domain/usecases/get_data_from_file.dart';
 
 @immutable
 abstract class PdfViewState extends Equatable {}
