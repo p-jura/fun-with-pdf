@@ -20,6 +20,6 @@ class FilePickerDataSourceImpl implements FilePickerDataSource {
       File file = File(result.files.single.path!);
       return PdfBytesModel.fromFile(file);
     }
-    return PdfBytesModel(Uint8List(0), Failure(noFileLoadedExeption));
+    return PdfBytesModel(Uint8List(0), Failure(NO_FILE_LODED_EXEPTION));
   }
 }

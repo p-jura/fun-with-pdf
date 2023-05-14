@@ -54,7 +54,7 @@ void main() {
         resoult,
         equals(
           Left(
-            Failure(failedToLoadFile),
+            Failure(FAILED_TO_LOAD_FILE),
           ),
         ),
       );
@@ -68,7 +68,7 @@ void main() {
         (_) async => Future.value(
           PdfBytesModel(
             Uint8List(8),
-            Failure(noFileLoadedExeption),
+            Failure(NO_FILE_LODED_EXEPTION),
           ),
         ),
       );
@@ -77,7 +77,7 @@ void main() {
         resoult,
         equals(
           Left(
-            Failure(noFileLoadedExeption),
+            Failure(NO_FILE_LODED_EXEPTION),
           ),
         ),
       );

@@ -17,7 +17,7 @@ class PdfBytesModel extends PdfBytes {
     if (file == null) {
       return PdfBytesModel(
         Uint8List(0),
-        Failure(exeptionFileTypeIsNotCorrect),
+        Failure(EXEPTION_FILE_TYPE_IS_NOT_CORRECT),
       );
     }
     return PdfBytesModel(

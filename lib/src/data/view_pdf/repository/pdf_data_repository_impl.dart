@@ -15,11 +15,11 @@ class PdfDataRepositoryImpl implements PdfDataRepository {
     final response = await dataSource.getFilePickerResoultAsModel();
     if (response == null) {
       return Left(
-        Failure(failedToLoadFile),
+        Failure(FAILED_TO_LOAD_FILE),
       );
     } else if (response.exception != null) {
       return Left(
-        Failure(noFileLoadedExeption),
+        Failure(NO_FILE_LODED_EXEPTION),
       );
     }
     return Right(response);

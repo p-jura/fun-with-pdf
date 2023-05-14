@@ -61,7 +61,7 @@ void main() {
           // assert
           expect(
             resoult.exception,
-            Failure(exeptionFileTypeIsNotCorrect),
+            Failure(EXEPTION_FILE_TYPE_IS_NOT_CORRECT),
           );
         },
       );
