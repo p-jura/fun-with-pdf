@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fun_with_pdf/src/presentation/create_pdf/pdf_create_widget.dart';
+import 'package:fun_with_pdf/src/presentation/create_pdf/pdf_create_site.dart';
 import 'package:fun_with_pdf/src/presentation/view_pdf/bloc/pdf_view_cubit.dart';
 import 'package:fun_with_pdf/src/presentation/view_pdf/pdf_view_widget.dart';
 import 'src/get_it_instance.dart' as gi;
@@ -42,7 +42,7 @@ class _NawigationBarWidgetState extends State<NawigationBarWidget> {
   int index = 0;
   final List pageList = [
     const PdfViewWidget(),
-    const PdfCreateWidget(),
+    const PdfCreateSite(),
   ];
   @override
   Widget build(BuildContext context) {
